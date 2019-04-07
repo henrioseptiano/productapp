@@ -11,8 +11,11 @@
 |
 */
 
-Route::get('/', 'Main\UserController@login');
-Route::get('/product', 'Main\ProductController@index');
+Route::get('/login', 'Main\UserController@login');
+Route::post('/loginprocess', 'Main\UserController@loginprocess');
+Route::get('/logoutprocess', 'Main\UserController@logoutprocess');
+Route::get('/', 'Main\ProductController@index');
+Route::post('/search', 'Main\ProductController@searchs');
 Route::get('/addproduct', 'Main\ProductController@addproduct');
 Route::get('/editproduct/{id}', 'Main\ProductController@editproduct');
 Route::get('/detailproduct/{id}', 'Main\ProductController@detailproduct');

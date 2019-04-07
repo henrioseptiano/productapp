@@ -30,15 +30,20 @@
                 </li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
-                </li>
+
+                @if(session()->has('username'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Welcome, {{session()->get('username')->username}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logoutprocess">Logout</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                @endif
+
             </ul>
         </div>
     </nav>

@@ -20,7 +20,10 @@
             position:relative;
             top:95px;
         }
-
+        .wrapper-reply{
+            position:relative;
+            margin-bottom:50px;
+        }
         .wraps-product{
             position:relative;
         }
@@ -41,26 +44,26 @@
 
     <div class="row justify-content-md-center wrapper-product">
         <div class="col-sm-3">
-            <img src="https://static.businessinsider.sg/2018/12/12/5c1c90f8e04d6243c7019cf6.png" width="250" height="200"/>
+            <img src="{{$carArray["image"]}}" width="250" height="200"/>
         </div>
         <div class="col-sm-9">
             <div class="row">
-                <h2> Nissan </h2>
+                <h2> {{$carArray["brand"]}}</h2>
             </div>
             <div class="row">
-                Car Model   : Serena
+                Car Model   : {{$carArray['carModel']}}
             </div>
             <div class="row">
-                Price       : Rp 150.000.000
+                Price       : Rp. {{number_format($carArray["price"],0)}}
             </div>
             <div class="row">
-                Fuel        : Gasoline
+                Fuel        : {{$carArray["fuel"]}}
             </div>
             <div class="row">
-                Year        : 2014
+                Year        : {{$carArray["yearBuilt"]}}
             </div>
             <div class="row">
-                Engine Type : Injection
+                Engine Type : {{$carArray["engineType"]}}
             </div>
         </div>
     </div>
@@ -68,7 +71,7 @@
         <div class="comment-box">
             <form>
                 <div class="form-group">
-                    <textarea class="form-control col-md-12" id="comments" rows="3" placeholder="add your comments here"></textarea>
+                    <textarea class="form-control col-md-12" id="comments" rows="3" placeholder="Add your Comments here"></textarea>
                 </div>
                 <button class="btn btn-info">Add Comment</button>
             </form>
@@ -87,6 +90,16 @@
             <br/>
             <button class="btn btn-primary">Upvote</button>
             <button class="btn btn-secondary">Downvote</button>
+                <div class="row justify-content-md-center wrapper-reply">
+                    <div class="comment-box">
+                        <form>
+                            <div class="form-group">
+                                <textarea class="form-control col-md-12" id="comments" rows="3" placeholder="Add your Reply here"></textarea>
+                            </div>
+                            <button class="btn btn-info">Add Reply</button>
+                        </form>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-1"></div>
                     <div class="col-sm-3">Sugih Hartono</div>

@@ -22,7 +22,6 @@ class CommentsController extends Controller
     }*/
     public function store(Request $request){
         $inputs = $request->all();
-
     }
 
     public function update(Request $request){

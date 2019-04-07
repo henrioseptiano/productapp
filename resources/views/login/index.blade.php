@@ -29,19 +29,25 @@
         <div class="wrapper">
             <div id="content">
                 <div class="box-login">
-                    <form>
+                    @if(session()->has('message'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+                    <form method="post" action="/loginprocess">
+                        {{ csrf_field() }}
                         <h3>Form Login</h3>
                         <div class="form-group row">
                             <label for="username" class="col-sm-3 col-form-label">Username</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control form-control-sm" id="username" placeholder="Username">
+                                <input type="text" name="username" class="form-control form-control-sm" id="username" placeholder="Username">
                             </div>
                             <div class="col-sm-2"></div>
                         </div>
                         <div class="form-group row">
                             <label for="password" class="col-sm-3 col-form-label">Password</label>
                             <div class="col-sm-7">
-                                <input type="password" class="form-control form-control-sm" id="password" placeholder="Password">
+                                <input type="password" name="password" class="form-control form-control-sm" id="password" placeholder="Password">
                             </div>
                             <div class="col-sm-2"></div>
                         </div>
