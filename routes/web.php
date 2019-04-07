@@ -13,3 +13,6 @@
 
 Route::get('/', 'Main\UserController@login');
 Route::get('/product', 'Main\ProductController@index');
+Route::get('/addproduct', 'Main\ProductController@addproduct');
+Route::get('/editproduct/{id}', 'Main\ProductController@editproduct');
+Route::get('/detailproduct/{id}', 'Main\ProductController@detailproduct');

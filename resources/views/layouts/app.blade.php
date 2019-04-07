@@ -3,6 +3,7 @@
 <head>
     <title>App Name - @yield('title')</title>
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}" />
+    @stack('styles')
 </head>
 <body>
 
@@ -46,5 +47,6 @@
     <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/vue.min.js') }}"></script>
+    @stack('scripts')
 </body>
 </html>

@@ -30,6 +30,11 @@
             <div class="form-box">
                 <form>
                     <div class="mb-3">
+                        <label for="model">Car Id</label>
+                        <input type="text" class="form-control" id="carmodel" disabled/>
+
+                    </div>
+                    <div class="mb-3">
                         <label for="model">Car Model</label>
                         <input type="text" class="form-control" id="carmodel" placeholder="Car Model"/>
 
@@ -70,7 +75,8 @@
                             <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                         </div>
                     </div>
-                    <button class="btn btn-success" type="submit">Add Product</button>
+
+                    <button class="btn btn-success" type="submit">Save</button>
 
                 </form>
             </div>
