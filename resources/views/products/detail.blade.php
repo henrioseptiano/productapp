@@ -47,6 +47,11 @@
             <img src="{{$carArray["image"]}}" width="250" height="200"/>
         </div>
         <div class="col-sm-9">
+            @if(Session::has('role') && Session::get('role') == "Administrator")
+                <div class="row">
+                    <a href="/editproduct/{{$carArray["carId"]}}"><button class="btn btn-info">Edit Product</button></a>
+                </div>
+            @endif
             <div class="row">
                 <h2> {{$carArray["brand"]}}</h2>
             </div>

@@ -28,23 +28,22 @@ class UserController extends Controller
         if(isset($input["password"]) && !empty($input["password"])){
             $password = $input["password"];
         }
-        $user = User::whereRaw("username = ?", [$username])->first();
+        $user = User::join("roles","users.roles_id","=","roles.id")
+                ->selectRaw("username, password, roles.role_name as role")->whereRaw("username = ?", [$username])->first();
         if(password_verify($password, $user->password)){
 
             Session::put('username',$username);
+            Session::put('role',$user->role);
             Session::save();
 
             return redirect('/');
         }else{
             return back()->with("message", "Invalid Login Credentials")->withInput();
         }
-        //return view("products.index");
     }
     public function logoutProcess(Request $request){
         Session::forget("username");
         Session::flush();
-        //$request->session()->forget("username");
-        //$request->session()->flush();
         return redirect('/');
     }
 }
