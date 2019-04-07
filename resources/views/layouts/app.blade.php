@@ -31,9 +31,9 @@
             </ul>
             <ul class="navbar-nav">
 
-                @if(session()->has('username'))
+                @if(Session::has("username"))
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Welcome, {{session()->get('username')->username}}</a>
+                        <a class="nav-link" href="#">Welcome, {{session()->get('username')}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logoutprocess">Logout</a>

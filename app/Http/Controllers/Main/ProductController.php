@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Car;
 use App\CarBrand;
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
@@ -122,6 +123,20 @@ class ProductController extends Controller
         $cars = Car::join("car_brands","Cars.brand_id","=","car_brands.id")
                   ->selectRaw("car_brands.brand_name as brand, model, year_built, fuel, price, engine_type, image, transmission");
         $getCar = $cars->whereRaw("Cars.id = ?", [$carId])->first();
+        $comments = Comment::whereRaw("car_id = ?",[$carId])->get();
+        $commentData = [];
+        foreach($comments as $key => $value){
+            $commentData[] = [
+                "commentId" => $value->id,
+                "genericId" => $value->generic_id,
+                "username"  => (!empty($value->generic_id)) ? $value->generic_id : $value->username,
+                "comment"   => $value->comment,
+                "voteCounter" => ($value->upvote - $value->downvote),
+                "upvote"    => $value->upvote,
+                "downvote"  => $value->downvote,
+                "Date"      => date("l d F Y h:i:s",strtotime($value->created_at))
+            ];
+        }
         $carArray = [
             "carId" => $carId,
             "carModel" => $getCar->model,
@@ -131,7 +146,8 @@ class ProductController extends Controller
             "transmission" => $getCar->transmission,
             "engineType" => $getCar->engine_type,
             "image" => url('')."/uploads".$getCar->image,
-            "brand" => $getCar->brand
+            "brand" => $getCar->brand,
+            "commentData" => $commentData
         ];
         return view('products.detail',["carArray" => $carArray]);
     }

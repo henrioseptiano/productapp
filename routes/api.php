@@ -38,4 +38,4 @@ Route::delete('deletecommentreplies', "Api\CommentRepliesController@destroy");
 Route::post('upvotecomments', "Api\UpvoteCommentsController@store");
 Route::post('upvotecommentreplies', "Api\UpvoteCommentRepliesController@store");
 Route::post('downvotecommentreplies', "Api\DownvoteCommentRepliesController@store");
-Route::post('downvvotecomments', "Api\DownvoteCommentsController@store");
+Route::post('downvotecomments', "Api\DownvoteCommentsController@store");
