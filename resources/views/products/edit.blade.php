@@ -41,11 +41,9 @@
                     </div>
                     <div class="form-group">
                         <label for="model">Car Brand</label>
-                        <select class="custom-select">
+                        <select v-model="car.brand" class="custom-select" id="carBrand">
                             <option value="">Select Brand</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            {!! $brandItems !!}
                         </select>
                     </div>
                     <div class="mb-3">
@@ -88,6 +86,56 @@
 @push('scripts')
 
     <script>
+        $(document).ready(function(){
+            $('#CustomFile').on('change',function(){
+                //get the file name
+                var fileName = $(this).val();
+                fileName = fileName.replace('C:\\fakepath\\'," ");
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+        new Vue({
+            el:'.wrapper-product',
+            data:{
+                car:{
+                    brand:document.getElementById("carBrand").val()
+                },
+                image:''
+            },
+            methods:{
+                getInputValue:function($event){
+                    this.image = $event.target.files[0];
 
+                },
+                addProduct:function(event){
+                    var formData = new FormData();
+                    formData.append('image',this.image);
+                    formData.append('model',this.car.model);
+                    formData.append('brand_id',this.car.brand);
+                    formData.append('fuel',this.car.fuel);
+                    formData.append('price',this.car.price);
+                    formData.append('transmission',this.car.transmission);
+                    formData.append('year_built',this.car.year);
+                    formData.append('engine_type',this.car.enginetype);
+                    //this.car.image = formData;
+                    //var datas = this.car;
+                    // POST /someUrl
+                    this.$http.post('/api/addcars', formData,
+                        {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        }).then(response => {
+                        if(response.data.http == "200"){
+                            alert(response.data.Message);
+                            window.location.href = "/product/";
+                        }else{
+                            alert(response.data.Message);
+                        }
+                    });
+                }
+            }
+        });
     </script>
 @endpush

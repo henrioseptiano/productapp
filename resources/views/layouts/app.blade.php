@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>App Name - @yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}" />
     @stack('styles')
 </head>
@@ -47,6 +48,7 @@
     <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/vue.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/vue-resource.min.js') }}"></script>
     @stack('scripts')
 </body>
 </html>
