@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 07, 2019 at 08:26 PM
+-- Generation Time: Apr 08, 2019 at 02:34 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.0.22
 
@@ -42,7 +42,6 @@ CREATE TABLE `Cars` (
 
 INSERT INTO `Cars` (`id`, `brand_id`, `model`, `year_built`, `fuel`, `price`, `transmission`, `engine_type`, `image`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
 (9, 1, 'Civic Turbo V6', '2015', '4.3L', 25000000, 'Automatic', 'VTEC', '/2019-04-07065338.png', '2019-04-07 06:53:38', '2019-04-07 06:53:38', ' ', ' '),
-(10, 1, 'Civic Turbo V8', '1999', 'fanta', 50000, '6 speed Manual', 'VTEC', '/2019-04-07065539.png', '2019-04-07 06:55:39', '2019-04-07 06:55:39', ' ', ' '),
 (11, 3, 'Impreza', '2000', 'Gasoline', 600000, 'manual', 'DOHC BOXER', '/2019-04-07065816.jpg', '2019-04-07 06:58:16', '2019-04-07 06:58:16', ' ', ' ');
 
 -- --------------------------------------------------------
@@ -91,12 +90,9 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`id`, `car_id`, `generic_id`, `username`, `comment`, `upvote`, `downvote`, `created_at`, `updated_at`) VALUES
 (2, 9, 'hDA4M', '', 'qweqweqwe', 0, 1, '2019-04-07 15:50:54', '2019-04-07 18:12:28'),
-(3, 10, 'hDAA4', '', 'wewe', 0, 0, '2019-04-07 15:56:48', '2019-04-07 15:56:48'),
 (4, 9, 'hDABX', '', 'qweqwe', 0, 0, '2019-04-07 15:58:19', '2019-04-07 15:58:19'),
-(5, 10, 'hDAF4', '', 'qweqwe', 0, 0, '2019-04-07 16:01:58', '2019-04-07 16:01:58'),
-(6, 10, 'hDAqM', '', 'testing commentar', 0, 0, '2019-04-07 16:40:30', '2019-04-07 16:40:30'),
-(7, 10, 'hDArO', '', 'qweqwe', 0, 0, '2019-04-07 16:41:34', '2019-04-07 16:41:34'),
-(8, 9, '', 'felix', 'adasdasd', 0, 0, '2019-04-07 16:51:52', '2019-04-07 16:51:52');
+(8, 9, '', 'felix', 'adasdasd', 0, 0, '2019-04-07 16:51:52', '2019-04-07 16:51:52'),
+(9, 11, '', 'felix', 'qweqwe', 0, 0, '2019-04-08 00:33:32', '2019-04-08 00:33:32');
 
 -- --------------------------------------------------------
 
@@ -160,7 +156,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `roles_id`, `first_name`, `last_name`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'benny', 'benny', 6, 'benny', 'fajarai', 'inactive', '0000-00-00 00:00:00', '2019-04-06 02:34:41'),
-(5, 'felix', '$2y$10$tISGi/.LRgEnaKLnB.uLW.mHHvNZVecPhR0o09K9C3duRVEzVC5Ey', 7, 'felix', 'felix', 'active', '2019-04-06 02:22:47', '2019-04-06 02:30:57');
+(5, 'felix', '$2y$10$tISGi/.LRgEnaKLnB.uLW.mHHvNZVecPhR0o09K9C3duRVEzVC5Ey', 6, 'felix', 'felix', 'active', '2019-04-06 02:22:47', '2019-04-06 02:30:57'),
+(6, 'henrio', '$2y$10$wu/yATMnESRO5qpQtmfG7Ozdw8Me.wPofrjQ6mZgNIVVPr2Rv8yvm', 7, 'henrio', 'henrio', 'inactive', '2019-04-08 00:19:42', '2019-04-08 00:19:42');
 
 -- --------------------------------------------------------
 
@@ -319,7 +316,7 @@ ALTER TABLE `car_brands`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `comment_replies`
 --
@@ -334,7 +331,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `user_downvote_comments`
 --
@@ -349,7 +346,7 @@ ALTER TABLE `user_downvote_comment_replies`
 -- AUTO_INCREMENT for table `user_upvote_comments`
 --
 ALTER TABLE `user_upvote_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user_upvote_comment_replies`
 --
