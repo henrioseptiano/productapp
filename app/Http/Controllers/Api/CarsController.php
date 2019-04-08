@@ -224,15 +224,16 @@ class CarsController extends Controller
     public function destroy(Request $request){
         $inputs = $request->all();
         $carId = 0;
-        if(isset($inputs['car_id']) && !empty($inputs['car_id'])){
-            if(is_numeric($inputs['car_id'])) {
-                $carId = intval($inputs['car_id']);
+        if(isset($inputs['carId']) && !empty($inputs['carId'])){
+            if(is_numeric($inputs['carId'])) {
+                $carId = intval($inputs['carId']);
             }
         }
         try{
             Car::whereRaw("id = ?",[$carId])->delete();
+            return \response()->json(["http" => "200", "Message" => "Data Successfully Deleted!"]);
         }catch (QueryException $e){
-            echo $e->getMessage();
+            return \response()->json(["http" => "400", "Message" => "Server Error! Please Contact Support Team!"]);
         }
         //Car::whereRaw("id = ?",[$carId])->delete();
     }

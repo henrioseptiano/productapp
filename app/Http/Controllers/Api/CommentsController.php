@@ -44,7 +44,8 @@ class CommentsController extends Controller
             $comments->generic_id = $genericId;
             $comments->username = $username;
             $comments->comment = $comment;
-            $comments->vote_counter = $voteCounter;
+            $comments->upvote = $voteCounter;
+            $comments->downvote = $voteCounter;
             $comments->created_at = Carbon::now();
             $comments->updated_at = Carbon::now();
             $comments->save();

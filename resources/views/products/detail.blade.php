@@ -51,6 +51,12 @@
                 <div class="row">
                     <a href="/editproduct/{{$carArray["carId"]}}"><button class="btn btn-info">Edit Product</button></a>
                 </div>
+                <div class="row">
+                    &nbsp;
+                </div>
+                <div class="row">
+                    <button class="btn btn-info" type="button" v-on:click="deleteProduct">Delete Product</button>
+                </div>
             @endif
             <div class="row">
                 <h2> {{$carArray["brand"]}}</h2>
@@ -206,6 +212,21 @@
                         if(response.data.http == "200"){
                             alert(response.data.Message);
                             location.reload();
+                            return false;
+                        }else{
+                            alert(response.data.Message);
+                        }
+                    });
+                },
+                deleteProduct:function(){
+                    var formData = new FormData();
+                    formData.append('_method', 'DELETE');
+                    formData.append('carId', this.carid);
+
+                    this.$http.post("/api/deletecar",formData).then(response => {
+                        if(response.data.http == "200"){
+                            alert(response.data.Message);
+                            window.location.href = "/";
                             return false;
                         }else{
                             alert(response.data.Message);
