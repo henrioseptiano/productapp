@@ -11,5 +11,16 @@
        password : henrio
   - Administrator :
        username : felix
-       password : felix
+       password : felix     
 </p>
+
+<p>
+  Spesifikasi Tools pada aplikasi ini adalah sebagai berikut:
+  - PHP : 7.0.33
+  - Laravel : 5.5
+  - nouislider
+  - Bootstrap 4
+  - VueJs 2
+  - Jquery
+</p>
+
